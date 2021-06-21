@@ -1,0 +1,53 @@
+mutation{
+  createCourse(input: {
+    courseName: "Js Bootcamp"
+    price: 199
+    stack: MOBILE
+    teachingAssists: [
+      {
+      firstName: "venkatesh"
+      lastName: "kallam"
+      exp: 1
+      },{
+      firstName: "varshika"
+      lastName: "kallam"
+      exp: 2
+      }
+    ]
+  }){
+    id, 
+    courseName
+  }
+}
+
+query{
+  getCourse(id: "Js0ztuEf3KgW2f5KvLJS5") {
+    id,
+    courseName,
+    category,
+    price,
+    language,
+    email,
+  }
+}
+
+
+
+input CourseInput {
+        id: ID
+        courseName: String!
+        category: String
+        price: Int
+        language: String
+        email: String
+        stack: Stack
+        teachingAssists: [TeachingAssistInput]
+    }
+    input TeachingAssistInput{
+        firstName: String
+        lastName: String
+        exp: Int
+    }
+    type Mutation{
+        createCourse(input: Course): Course
+    }
